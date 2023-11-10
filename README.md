@@ -14,14 +14,14 @@ Microsoft.EntityFrameworkCore.Tools
 db_portafolio
 ```
 
-### some configs
+### Some configs
 
 * Rename appsettings.json.txt file to appsettings.json and add the connections, here some examples
 ```
 "ConnectionStrings": {
-	"RutaWebSQL": "Data Source=server_name; Initial Catalog=db_name; User ID=user_name; Password=user_password",
-    "RutaLocalSQL2": "Data Source=server_name; Database=db_name; Trusted_Connection=True; MultipleActiveResultSets=True",
-    "RutaLocalSQL": "Server=server_name; Database=db_name; User ID=user_name; Password=user_password; MultipleActiveResultSets=True"
+    "RutaWebSQL": "Data Source=server_name; Initial Catalog=sql_name; User ID=user_name; Password=user_password;",
+    "RutaLocalSQL1": "Data Source=server_name; Initial Catalog=sql_name; User ID=user_name; Password=user_password; MultipleActiveResultSets=True; TrustServerCertificate=True;",
+    "RutaLocalSQL2": "Server=server_name; Database=sql_name; Trusted_Connection=True; MultipleActiveResultSets=True; TrustServerCertificate=True;"
   }
 ```
 
