@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace db_portafolio
 {
-    public class PF_Links
+    public class PF_Link
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -27,6 +27,6 @@ namespace db_portafolio
         public int Id_Link_Grp { get; set; }
 
         [ForeignKey("Id_Link_Grp")]
-        public virtual PF_Links_Grp Links_Grp { get; set; }
+        public virtual PF_Link_Grp LinksGrp { get; set; }
     }
 }

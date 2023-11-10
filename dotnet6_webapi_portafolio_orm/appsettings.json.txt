@@ -1,0 +1,14 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "RutaWebSQL": "Data Source=server_name; Initial Catalog=sql_name; User ID=user_name; Password=user_password;",
+    "RutaLocalSQL1": "Data Source=server_name; Initial Catalog=sql_name; User ID=user_name; Password=user_password; MultipleActiveResultSets=True; TrustServerCertificate=True;",
+    "RutaLocalSQL2": "Server=server_name; Database=sql_name; Trusted_Connection=True; MultipleActiveResultSets=True; TrustServerCertificate=True;"
+  }
+}
