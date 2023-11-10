@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet6_webapi_portafolio_orm", "dotnet6_webapi_portafolio_orm\dotnet6_webapi_portafolio_orm.csproj", "{3303D36E-D3C2-4D7B-9465-D4006E73B86C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "db_portafolio", "db_portafolio\db_portafolio.csproj", "{FDF6B304-DD22-4C2C-B8BF-1753C131C9E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3303D36E-D3C2-4D7B-9465-D4006E73B86C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3303D36E-D3C2-4D7B-9465-D4006E73B86C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3303D36E-D3C2-4D7B-9465-D4006E73B86C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3303D36E-D3C2-4D7B-9465-D4006E73B86C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF6B304-DD22-4C2C-B8BF-1753C131C9E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF6B304-DD22-4C2C-B8BF-1753C131C9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF6B304-DD22-4C2C-B8BF-1753C131C9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF6B304-DD22-4C2C-B8BF-1753C131C9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94CA75A4-249D-4F0A-B815-64FF9048BD0E}
+	EndGlobalSection
+EndGlobal
