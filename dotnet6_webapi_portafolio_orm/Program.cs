@@ -13,17 +13,17 @@ builder.Services.AddSwaggerGen();
 //Inyección de dependencia
 builder.Services.AddDbContext<PortafolioContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("RutaLocalSQL2"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RutaLocalSQL1"));
 });
 
 var app = builder.Build();
 
 //Migrar BD
-//using (var scope = app.Services.CreateScope())
-//{
-//    var context = scope.ServiceProvider.GetRequiredService<PortafolioContext>();
-//    context.Database.Migrate();
-//}
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<PortafolioContext>();
+    context.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

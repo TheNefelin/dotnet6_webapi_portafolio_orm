@@ -12,16 +12,14 @@ namespace db_portafolio
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id {  get; set; }
+        public int id {  get; set; }
 
         [Required]
-        public string Nombre { get; set; }
+        [StringLength(50)]
+        public string nombre { get; set; }
 
         [Required]
-        public int Orden {  get; set; }
-
-        [Required]
-        public bool Estado { get; set; }
+        public bool estado { get; set; }
 
         public virtual ICollection<PF_Link> Links { get; set; }
     }
