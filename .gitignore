@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/dotnet6_webapi_portafolio_orm/appsettings.json
+/dotnet6_webapi_portafolio_orm/appsettings.json
