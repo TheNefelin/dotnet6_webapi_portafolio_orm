@@ -29,6 +29,6 @@ namespace db_portafolio
         public int id_link_grp { get; set; }
 
         [ForeignKey("id_link_grp")]
-        public virtual PF_Link_Grp LinksGrp { get; set; }
+        public virtual PF_Link_Grp LinkGrp { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace db_portafolio
 {
-    public class PF_Project
+    public class PF_Youtube
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,12 +19,7 @@ namespace db_portafolio
         public string nombre { get; set; }
 
         [Required]
-        [StringLength(255)]
-        public string url_img { get; set; }
-
-        [Required]
-        public int orden { get; set; }
-
-        public virtual ICollection<PF_Pro_Sour> ProjectSources { get; set; }
+        [StringLength(50)]
+        public string video_id { get; set; }
     }
 }

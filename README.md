@@ -5,6 +5,8 @@
 ```
 Microsoft.EntityFrameworkCore.SqlServer
 Microsoft.EntityFrameworkCore.Tools
+Microsoft.EntityFrameworkCore.Proxies
+Dapper
 ```
 
 ### 2.- DB Library Project

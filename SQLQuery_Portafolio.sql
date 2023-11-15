@@ -6,6 +6,8 @@ DROP TABLE pf_technology
 DROP TABLE pf_project
 DROP TABLE pf_project_list
 DROP TABLE pf_pro_prol
+DROP TABLE pf_pro_lang
+DROP TABLE pf_pro_tech
 
 SELECT * FROM __EFMigrationsHistory
 SELECT * FROM pf_link_grp
@@ -15,6 +17,8 @@ SELECT * FROM pf_technology
 SELECT * FROM pf_project
 SELECT * FROM pf_project_list
 SELECT * FROM pf_pro_prol
+SELECT * FROM pf_pro_lang
+SELECT * FROM pf_pro_tech
 
 -------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------

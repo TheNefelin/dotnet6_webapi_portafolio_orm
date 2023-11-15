@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace db_portafolio
 {
-    public class PF_Project_List
+    public class PF_Source
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,5 +23,7 @@ namespace db_portafolio
 
         [StringLength(255)]
         public string? url_repo { get; set; }
+
+        public virtual ICollection<PF_Pro_Sour> ProjectSources { get; set; }
     }
 }
