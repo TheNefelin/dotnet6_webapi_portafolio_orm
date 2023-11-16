@@ -3,14 +3,18 @@
 ### 1.- Web Api Project
 * NuGet dependency 
 ```
-db_portafolio
 Dapper
 Microsoft.EntityFrameworkCore.Tools
 Microsoft.EntityFrameworkCore.Proxies
 ```
 
+* Project dependency 
+```
+db_portafolio
+```
+
 ### 2.- DB Library Project
-* dependency 
+* NuGet dependency 
 ```
 Microsoft.EntityFrameworkCore.SqlServer
 Microsoft.EntityFrameworkCore.Tools
@@ -53,4 +57,8 @@ using (var scope = app.Services.CreateScope())
 5. Type "Add-Migration InitDB" in the console (Package Manager Console)
 6. If you follow everything, you should have a new folder call Migrations on db_portafolio
 
-* For display data like api, add new blank api controller and add connection for dapper, example: DataController.cs
+> [!NOTE]
+> For display data like api, add new blank api controller and add connection for dapper, example: DataController.cs
+
+### 3.- SQL file do the same thing and more
+[SQL file repository](https://github.com/TheNefelin/SQLServer)

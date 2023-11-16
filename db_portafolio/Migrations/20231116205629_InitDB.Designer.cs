@@ -11,7 +11,7 @@ using db_portafolio;
 namespace db_portafolio.Migrations
 {
     [DbContext(typeof(PortafolioContext))]
-    [Migration("20231116192840_InitDB")]
+    [Migration("20231116205629_InitDB")]
     partial class InitDB
     {
         /// <inheritdoc />
