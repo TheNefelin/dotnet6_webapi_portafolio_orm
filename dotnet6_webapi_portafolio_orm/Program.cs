@@ -18,7 +18,7 @@ builder.Services.AddDbContext<PortafolioContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RutaLocalSQL1"));
 });
 
-builder.Services.AddTransient(_ => new ConexionDBContext(builder.Configuration.GetConnectionString("RutaWebSQL")));
+builder.Services.AddTransient(_ => new ConexionDBContext(builder.Configuration.GetConnectionString("RutaLocalSQL1")));
 // -----------------------------------------------------------------------------------------
 
 var app = builder.Build();
