@@ -241,7 +241,8 @@ namespace db_portafolio.Migrations
                     { 13, "Kartax v3.0 app", "https://kartax-next13.vercel.app", null },
                     { 14, "Kartax v3.0 api", "https://kartax-api-py.vercel.app/docs", null },
                     { 15, "Guia v1.0 app", "https://guias-juegos-next13-ts.vercel.app", "https://github.com/TheNefelin/guias-juegos-next13-ts" },
-                    { 16, "SQL Server", null, "https://github.com/TheNefelin/SQLServer" }
+                    { 16, "SQL Server", null, "https://github.com/TheNefelin/SQLServer" },
+                    { 17, "Agiliza app", "https://agiliza-next14-ts.vercel.app", "https://github.com/TheNefelin/agiliza-next14-ts" }
                 });
 
             migrationBuilder.InsertData(
@@ -278,7 +279,8 @@ namespace db_portafolio.Migrations
                     { 8, "Kartax v2.0", 8, "pf_kartax_v2.png" },
                     { 9, "Portafolio v2.0", 9, "pf_portafolio_v2.png" },
                     { 10, "Kartax v3.0 (Developing...)", 10, "pf_kartax_v3.png" },
-                    { 11, "Guides for games", 11, "pf_guides_for_games.png" }
+                    { 11, "Guides for games", 11, "pf_guides_for_games.png" },
+                    { 12, "Aguiliza", 12, "pf_guides_for_games.png" }
                 });
 
             migrationBuilder.InsertData(
@@ -424,7 +426,8 @@ namespace db_portafolio.Migrations
                     { 10, 14 },
                     { 11, 6 },
                     { 11, 15 },
-                    { 11, 16 }
+                    { 11, 16 },
+                    { 12, 17 }
                 });
 
             migrationBuilder.InsertData(

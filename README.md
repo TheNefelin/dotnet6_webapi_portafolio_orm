@@ -44,7 +44,7 @@ using (var scope = app.Services.CreateScope())
 }
 ```
 
-###Define as Initial Project where you have the Context
+### Define as Initial Project where you have the Context
 
 1. right click on dotnet6_webapi_portafolio_orm
 2. Set as startup project

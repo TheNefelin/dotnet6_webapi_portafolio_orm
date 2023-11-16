@@ -979,6 +979,11 @@ namespace db_portafolio.Migrations
                         {
                             id_project = 11,
                             id_source = 6
+                        },
+                        new
+                        {
+                            id_project = 12,
+                            id_source = 17
                         });
                 });
 
@@ -1218,6 +1223,13 @@ namespace db_portafolio.Migrations
                             nombre = "Guides for games",
                             orden = 11,
                             url_img = "pf_guides_for_games.png"
+                        },
+                        new
+                        {
+                            id = 12,
+                            nombre = "Aguiliza",
+                            orden = 12,
+                            url_img = "pf_guides_for_games.png"
                         });
                 });
 
@@ -1352,6 +1364,13 @@ namespace db_portafolio.Migrations
                             id = 16,
                             nombre = "SQL Server",
                             url_repo = "https://github.com/TheNefelin/SQLServer"
+                        },
+                        new
+                        {
+                            id = 17,
+                            nombre = "Agiliza app",
+                            url_deploy = "https://agiliza-next14-ts.vercel.app",
+                            url_repo = "https://github.com/TheNefelin/agiliza-next14-ts"
                         });
                 });
 

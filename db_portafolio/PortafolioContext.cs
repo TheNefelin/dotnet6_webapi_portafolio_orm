@@ -227,7 +227,8 @@ namespace db_portafolio
                 new PF_Project { id = 8, nombre = "Kartax v2.0", url_img = "pf_kartax_v2.png", orden = ++order },
                 new PF_Project { id = 9, nombre = "Portafolio v2.0", url_img = "pf_portafolio_v2.png", orden = ++order },
                 new PF_Project { id = 10, nombre = "Kartax v3.0 (Developing...)", url_img = "pf_kartax_v3.png", orden = ++order },
-                new PF_Project { id = 11, nombre = "Guides for games", url_img = "pf_guides_for_games.png", orden = ++order }
+                new PF_Project { id = 11, nombre = "Guides for games", url_img = "pf_guides_for_games.png", orden = ++order },
+                new PF_Project { id = 12, nombre = "Aguiliza", url_img = "pf_guides_for_games.png", orden = ++order }
             );
 
             modelBuilder.Entity<PF_Source>().HasData(
@@ -246,7 +247,8 @@ namespace db_portafolio
                 new PF_Source { id = 13, nombre = "Kartax v3.0 app", url_deploy = "https://kartax-next13.vercel.app", url_repo = null },
                 new PF_Source { id = 14, nombre = "Kartax v3.0 api", url_deploy = "https://kartax-api-py.vercel.app/docs", url_repo = null },
                 new PF_Source { id = 15, nombre = "Guia v1.0 app", url_deploy = "https://guias-juegos-next13-ts.vercel.app", url_repo = "https://github.com/TheNefelin/guias-juegos-next13-ts" },
-                new PF_Source { id = 16, nombre = "SQL Server", url_deploy = null, url_repo = "https://github.com/TheNefelin/SQLServer" }
+                new PF_Source { id = 16, nombre = "SQL Server", url_deploy = null, url_repo = "https://github.com/TheNefelin/SQLServer" },
+                new PF_Source { id = 17, nombre = "Agiliza app", url_deploy = "https://agiliza-next14-ts.vercel.app", url_repo = "https://github.com/TheNefelin/agiliza-next14-ts" }
             );
 
             modelBuilder.Entity<PF_Pro_Sour>().HasData(
@@ -266,7 +268,8 @@ namespace db_portafolio
                 new PF_Pro_Sour { id_project = 10, id_source = 14 },
                 new PF_Pro_Sour { id_project = 11, id_source = 15 },
                 new PF_Pro_Sour { id_project = 11, id_source = 16 },
-                new PF_Pro_Sour { id_project = 11, id_source = 6 }
+                new PF_Pro_Sour { id_project = 11, id_source = 6 },
+                new PF_Pro_Sour { id_project = 12, id_source = 17 }
             );
 
             modelBuilder.Entity<PF_Language>().HasData(
