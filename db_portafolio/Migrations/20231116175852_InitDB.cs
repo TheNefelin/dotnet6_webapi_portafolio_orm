@@ -27,6 +27,49 @@ namespace db_portafolio.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "pf_pro_language",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    url_img = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_pf_pro_language", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "pf_pro_source",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    url_deploy = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    url_repo = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_pf_pro_source", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "pf_pro_technology",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    url_img = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_pf_pro_technology", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "pf_project",
                 columns: table => new
                 {
@@ -39,21 +82,6 @@ namespace db_portafolio.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_pf_project", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "pf_source",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    url_deploy = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    url_repo = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_pf_source", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,6 +121,30 @@ namespace db_portafolio.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "pf_pro_lang",
+                columns: table => new
+                {
+                    id_project = table.Column<int>(type: "int", nullable: false),
+                    id_language = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_pf_pro_lang", x => new { x.id_project, x.id_language });
+                    table.ForeignKey(
+                        name: "FK_pf_pro_lang_pf_pro_language_id_language",
+                        column: x => x.id_language,
+                        principalTable: "pf_pro_language",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_pf_pro_lang_pf_project_id_project",
+                        column: x => x.id_project,
+                        principalTable: "pf_project",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "pf_pro_sour",
                 columns: table => new
                 {
@@ -103,15 +155,39 @@ namespace db_portafolio.Migrations
                 {
                     table.PrimaryKey("PK_pf_pro_sour", x => new { x.id_project, x.id_source });
                     table.ForeignKey(
+                        name: "FK_pf_pro_sour_pf_pro_source_id_source",
+                        column: x => x.id_source,
+                        principalTable: "pf_pro_source",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_pf_pro_sour_pf_project_id_project",
                         column: x => x.id_project,
                         principalTable: "pf_project",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "pf_pro_tech",
+                columns: table => new
+                {
+                    id_project = table.Column<int>(type: "int", nullable: false),
+                    id_technology = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_pf_pro_tech", x => new { x.id_project, x.id_technology });
                     table.ForeignKey(
-                        name: "FK_pf_pro_sour_pf_source_id_source",
-                        column: x => x.id_source,
-                        principalTable: "pf_source",
+                        name: "FK_pf_pro_tech_pf_pro_technology_id_technology",
+                        column: x => x.id_technology,
+                        principalTable: "pf_pro_technology",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_pf_pro_tech_pf_project_id_project",
+                        column: x => x.id_project,
+                        principalTable: "pf_project",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -132,25 +208,21 @@ namespace db_portafolio.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "pf_project",
-                columns: new[] { "id", "nombre", "orden", "url_img" },
+                table: "pf_pro_language",
+                columns: new[] { "id", "nombre", "url_img" },
                 values: new object[,]
                 {
-                    { 1, "Tecno Chile", 1, "03-tecno-chile.jpg" },
-                    { 2, "Web Components v1.0", 2, "04-web-components-v1.jpg" },
-                    { 3, "Kartax v1.0", 3, "01-kartax-v1.jpg" },
-                    { 4, "Portafolio V1.0", 4, "02-portafolio-v1.jpg" },
-                    { 5, "Game El Cubo v2.0", 5, "05-el-cubo-v2.jpg" },
-                    { 6, "Transbank POS Integration v1.0", 6, "06-transbank-pos.png" },
-                    { 7, "Arduino DHT Temperature Monitoring by Network", 7, "07-DHT.png" },
-                    { 8, "Kartax v2.0", 8, "08-kartax-v2.png" },
-                    { 9, "Portafolio v2.0", 9, "09-portafolio-v2.png" },
-                    { 10, "Kartax v3.0 (Developing...)", 10, "10-kartax-v3.png" },
-                    { 11, "Guides for games", 11, "11-guides-for-games.png" }
+                    { 1, "C#", "pf_csharp.svg" },
+                    { 2, "CSS", "pf_css.svg" },
+                    { 3, "HTML", "pf_html.svg" },
+                    { 4, "JavaScript", "pf_js.svg" },
+                    { 5, "VisualBasic", "pf_vb.svg" },
+                    { 6, "Python", "pf_py.svg" },
+                    { 7, "TypeScript", "pf_ts.svg" }
                 });
 
             migrationBuilder.InsertData(
-                table: "pf_source",
+                table: "pf_pro_source",
                 columns: new[] { "id", "nombre", "url_deploy", "url_repo" },
                 values: new object[,]
                 {
@@ -166,9 +238,47 @@ namespace db_portafolio.Migrations
                     { 10, "Kartax v2.0 app", "https://kartax-express-production.up.railway.app/", "https://github.com/TheNefelin/kartax-express" },
                     { 11, "Kartax v2.0 api", "https://kartax-api-production.up.railway.app", "https://github.com/TheNefelin/kartax-api" },
                     { 12, "Portafolio v2.0 app", "http://www.francisco-dev.cl", "https://github.com/TheNefelin/portafolio-next13" },
-                    { 13, "Kartax v3.0 app", "https://kartax-next13.vercel.app/", null },
-                    { 14, "Guia v1.0 app", "https://guias-juegos-next13-ts.vercel.app", "https://github.com/TheNefelin/guias-juegos-next13-ts" },
-                    { 15, "SQL Server", null, "https://github.com/TheNefelin/SQLServer" }
+                    { 13, "Kartax v3.0 app", "https://kartax-next13.vercel.app", null },
+                    { 14, "Kartax v3.0 api", "https://kartax-api-py.vercel.app/docs", null },
+                    { 15, "Guia v1.0 app", "https://guias-juegos-next13-ts.vercel.app", "https://github.com/TheNefelin/guias-juegos-next13-ts" },
+                    { 16, "SQL Server", null, "https://github.com/TheNefelin/SQLServer" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "pf_pro_technology",
+                columns: new[] { "id", "nombre", "url_img" },
+                values: new object[,]
+                {
+                    { 1, "Bootstrap", "pf_bootstrap.svg" },
+                    { 2, "DotNet", "pf_dotnet.svg" },
+                    { 3, "Git", "pf_git.svg" },
+                    { 4, "MySQL", "pf_mysql.svg" },
+                    { 5, "Node", "pf_node.png" },
+                    { 6, "React", "pf_react.svg" },
+                    { 7, "SqlServer", "pf_mssql.png" },
+                    { 8, "Unity", "pf_unity.png" },
+                    { 9, "VSCode", "pf_vscode.png" },
+                    { 10, "VSStudio", "pf_vsstudio.svg" },
+                    { 11, "NextJS", "pf_nextjs.svg" },
+                    { 12, "PostgreSQL", "pf_postgresql.png" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "pf_project",
+                columns: new[] { "id", "nombre", "orden", "url_img" },
+                values: new object[,]
+                {
+                    { 1, "Tecno Chile", 1, "pf_tecno_chile.jpg" },
+                    { 2, "Web Components v1.0", 2, "pf_web_components_v1.jpg" },
+                    { 3, "Kartax v1.0", 3, "pf_kartax_v1.jpg" },
+                    { 4, "Portafolio V1.0", 4, "pf_portafolio_v1.jpg" },
+                    { 5, "Game El Cubo v2.0", 5, "pf_el_cubo_v2.jpg" },
+                    { 6, "Transbank POS Integration v1.0", 6, "pf_transbank_pos.png" },
+                    { 7, "Arduino DHT Temperature Monitoring by Network", 7, "pf_DHT.png" },
+                    { 8, "Kartax v2.0", 8, "pf_kartax_v2.png" },
+                    { 9, "Portafolio v2.0", 9, "pf_portafolio_v2.png" },
+                    { 10, "Kartax v3.0 (Developing...)", 10, "pf_kartax_v3.png" },
+                    { 11, "Guides for games", 11, "pf_guides_for_games.png" }
                 });
 
             migrationBuilder.InsertData(
@@ -256,13 +366,95 @@ namespace db_portafolio.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "pf_pro_lang",
+                columns: new[] { "id_language", "id_project" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 1 },
+                    { 3, 1 },
+                    { 4, 1 },
+                    { 2, 2 },
+                    { 3, 2 },
+                    { 4, 2 },
+                    { 2, 3 },
+                    { 3, 3 },
+                    { 4, 3 },
+                    { 1, 4 },
+                    { 2, 4 },
+                    { 3, 4 },
+                    { 4, 4 },
+                    { 1, 5 },
+                    { 5, 6 },
+                    { 5, 7 },
+                    { 2, 8 },
+                    { 3, 8 },
+                    { 4, 8 },
+                    { 2, 9 },
+                    { 3, 9 },
+                    { 4, 9 },
+                    { 2, 10 },
+                    { 3, 10 },
+                    { 4, 10 },
+                    { 6, 10 },
+                    { 1, 11 },
+                    { 2, 11 },
+                    { 3, 11 },
+                    { 7, 11 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "pf_pro_sour",
                 columns: new[] { "id_project", "id_source" },
                 values: new object[,]
                 {
                     { 1, 1 },
                     { 1, 2 },
-                    { 2, 3 }
+                    { 2, 3 },
+                    { 3, 4 },
+                    { 4, 5 },
+                    { 4, 6 },
+                    { 5, 7 },
+                    { 6, 8 },
+                    { 7, 9 },
+                    { 8, 10 },
+                    { 8, 11 },
+                    { 9, 12 },
+                    { 10, 13 },
+                    { 10, 14 },
+                    { 11, 6 },
+                    { 11, 15 },
+                    { 11, 16 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "pf_pro_tech",
+                columns: new[] { "id_project", "id_technology" },
+                values: new object[,]
+                {
+                    { 1, 2 },
+                    { 1, 7 },
+                    { 1, 9 },
+                    { 2, 9 },
+                    { 3, 9 },
+                    { 4, 2 },
+                    { 4, 7 },
+                    { 4, 9 },
+                    { 5, 8 },
+                    { 5, 10 },
+                    { 6, 2 },
+                    { 7, 2 },
+                    { 8, 5 },
+                    { 8, 12 },
+                    { 9, 5 },
+                    { 9, 6 },
+                    { 9, 11 },
+                    { 10, 7 },
+                    { 10, 9 },
+                    { 10, 11 },
+                    { 11, 7 },
+                    { 11, 10 },
+                    { 11, 11 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -271,9 +463,19 @@ namespace db_portafolio.Migrations
                 column: "id_link_grp");
 
             migrationBuilder.CreateIndex(
+                name: "IX_pf_pro_lang_id_language",
+                table: "pf_pro_lang",
+                column: "id_language");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_pf_pro_sour_id_source",
                 table: "pf_pro_sour",
                 column: "id_source");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_pf_pro_tech_id_technology",
+                table: "pf_pro_tech",
+                column: "id_technology");
         }
 
         /// <inheritdoc />
@@ -283,7 +485,13 @@ namespace db_portafolio.Migrations
                 name: "pf_link");
 
             migrationBuilder.DropTable(
+                name: "pf_pro_lang");
+
+            migrationBuilder.DropTable(
                 name: "pf_pro_sour");
+
+            migrationBuilder.DropTable(
+                name: "pf_pro_tech");
 
             migrationBuilder.DropTable(
                 name: "pf_youtube");
@@ -292,10 +500,16 @@ namespace db_portafolio.Migrations
                 name: "pf_link_grp");
 
             migrationBuilder.DropTable(
-                name: "pf_project");
+                name: "pf_pro_language");
 
             migrationBuilder.DropTable(
-                name: "pf_source");
+                name: "pf_pro_source");
+
+            migrationBuilder.DropTable(
+                name: "pf_pro_technology");
+
+            migrationBuilder.DropTable(
+                name: "pf_project");
         }
     }
 }

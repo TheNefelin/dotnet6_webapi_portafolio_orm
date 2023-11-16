@@ -16,6 +16,10 @@ namespace db_portafolio
         public DbSet<PF_Project> PF_Project { get; set; }
         public DbSet<PF_Source> PF_Source { get; set; }
         public DbSet<PF_Pro_Sour> PF_Pro_Sour { get; set; }
+        public DbSet<PF_Language> PF_Language { get; set; }
+        public DbSet<PF_Pro_Lang> PF_Pro_Lang { get; set; }
+        public DbSet<PF_Technology> PF_Technology { get; set; }
+        public DbSet<PF_Pro_Tech> PF_Pro_Tech { get; set; }   
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -43,8 +47,9 @@ namespace db_portafolio
                 .ToTable("pf_project")
                 .HasKey(e => e.id);
 
+            // Sources -------------------------------------------------------------------
             modelBuilder.Entity<PF_Source>()
-                .ToTable("pf_source")
+                .ToTable("pf_pro_source")
                 .HasKey(e => e.id);
 
             modelBuilder.Entity<PF_Pro_Sour>()
@@ -63,9 +68,48 @@ namespace db_portafolio
                 .HasForeignKey(e => e.id_source)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // ---------------------------------------------------------------------------
-            // ---------------------------------------------------------------------------
-            // ---------------------------------------------------------------------------
+            // Languages -----------------------------------------------------------------
+            modelBuilder.Entity<PF_Language>()
+                .ToTable("pf_pro_language")
+                .HasKey(e => e.id);
+
+            modelBuilder.Entity<PF_Pro_Lang>()
+                .ToTable("pf_pro_lang")
+                .HasKey(e => new { e.id_project, e.id_language });
+
+            modelBuilder.Entity<PF_Pro_Lang>()
+                .HasOne(e => e.Project)
+                .WithMany(e => e.ProjectLanguage)
+                .HasForeignKey(e => e.id_project)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PF_Pro_Lang>()
+                .HasOne(e => e.Language)
+                .WithMany(e => e.ProjectLanguage)
+                .HasForeignKey(e => e.id_language)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Technology ----------------------------------------------------------------
+            modelBuilder.Entity<PF_Technology>()
+                .ToTable("pf_pro_technology")
+                .HasKey(e => e.id);
+
+            modelBuilder.Entity<PF_Pro_Tech>()
+                .ToTable("pf_pro_tech")
+                .HasKey(e => new { e.id_project, e.id_technology });
+
+            modelBuilder.Entity<PF_Pro_Tech>()
+                .HasOne(e => e.Project)
+                .WithMany(e => e.ProjectTechnology)
+                .HasForeignKey(e => e.id_project)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PF_Pro_Tech>()
+                .HasOne(e => e.Technology)
+                .WithMany(e => e.ProjectTechnology)
+                .HasForeignKey(e => e.id_technology)
+                .OnDelete(DeleteBehavior.Restrict);
+
             // ---------------------------------------------------------------------------
 
             SeedData(modelBuilder);
@@ -173,17 +217,17 @@ namespace db_portafolio
             order = 0;
 
             modelBuilder.Entity<PF_Project>().HasData(
-                new PF_Project { id = 1, nombre = "Tecno Chile", url_img = "03-tecno-chile.jpg", orden = ++order },
-                new PF_Project { id = 2, nombre = "Web Components v1.0", url_img = "04-web-components-v1.jpg", orden = ++order },
-                new PF_Project { id = 3, nombre = "Kartax v1.0", url_img = "01-kartax-v1.jpg", orden = ++order },
-                new PF_Project { id = 4, nombre = "Portafolio V1.0", url_img = "02-portafolio-v1.jpg", orden = ++order },
-                new PF_Project { id = 5, nombre = "Game El Cubo v2.0", url_img = "05-el-cubo-v2.jpg", orden = ++order },
-                new PF_Project { id = 6, nombre = "Transbank POS Integration v1.0", url_img = "06-transbank-pos.png", orden = ++order },
-                new PF_Project { id = 7, nombre = "Arduino DHT Temperature Monitoring by Network", url_img = "07-DHT.png", orden = ++order },
-                new PF_Project { id = 8, nombre = "Kartax v2.0", url_img = "08-kartax-v2.png", orden = ++order },
-                new PF_Project { id = 9, nombre = "Portafolio v2.0", url_img = "09-portafolio-v2.png", orden = ++order },
-                new PF_Project { id = 10, nombre = "Kartax v3.0 (Developing...)", url_img = "10-kartax-v3.png", orden = ++order },
-                new PF_Project { id = 11, nombre = "Guides for games", url_img = "11-guides-for-games.png", orden = ++order }
+                new PF_Project { id = 1, nombre = "Tecno Chile", url_img = "pf_tecno_chile.jpg", orden = ++order },
+                new PF_Project { id = 2, nombre = "Web Components v1.0", url_img = "pf_web_components_v1.jpg", orden = ++order },
+                new PF_Project { id = 3, nombre = "Kartax v1.0", url_img = "pf_kartax_v1.jpg", orden = ++order },
+                new PF_Project { id = 4, nombre = "Portafolio V1.0", url_img = "pf_portafolio_v1.jpg", orden = ++order },
+                new PF_Project { id = 5, nombre = "Game El Cubo v2.0", url_img = "pf_el_cubo_v2.jpg", orden = ++order },
+                new PF_Project { id = 6, nombre = "Transbank POS Integration v1.0", url_img = "pf_transbank_pos.png", orden = ++order },
+                new PF_Project { id = 7, nombre = "Arduino DHT Temperature Monitoring by Network", url_img = "pf_DHT.png", orden = ++order },
+                new PF_Project { id = 8, nombre = "Kartax v2.0", url_img = "pf_kartax_v2.png", orden = ++order },
+                new PF_Project { id = 9, nombre = "Portafolio v2.0", url_img = "pf_portafolio_v2.png", orden = ++order },
+                new PF_Project { id = 10, nombre = "Kartax v3.0 (Developing...)", url_img = "pf_kartax_v3.png", orden = ++order },
+                new PF_Project { id = 11, nombre = "Guides for games", url_img = "pf_guides_for_games.png", orden = ++order }
             );
 
             modelBuilder.Entity<PF_Source>().HasData(
@@ -199,15 +243,135 @@ namespace db_portafolio
                 new PF_Source { id = 10, nombre = "Kartax v2.0 app", url_deploy = "https://kartax-express-production.up.railway.app/", url_repo = "https://github.com/TheNefelin/kartax-express" },
                 new PF_Source { id = 11, nombre = "Kartax v2.0 api", url_deploy = "https://kartax-api-production.up.railway.app", url_repo = "https://github.com/TheNefelin/kartax-api" },
                 new PF_Source { id = 12, nombre = "Portafolio v2.0 app", url_deploy = "http://www.francisco-dev.cl", url_repo = "https://github.com/TheNefelin/portafolio-next13" },
-                new PF_Source { id = 13, nombre = "Kartax v3.0 app", url_deploy = "https://kartax-next13.vercel.app/", url_repo = null },
-                new PF_Source { id = 14, nombre = "Guia v1.0 app", url_deploy = "https://guias-juegos-next13-ts.vercel.app", url_repo = "https://github.com/TheNefelin/guias-juegos-next13-ts" },
-                new PF_Source { id = 15, nombre = "SQL Server", url_deploy = null, url_repo = "https://github.com/TheNefelin/SQLServer" }
+                new PF_Source { id = 13, nombre = "Kartax v3.0 app", url_deploy = "https://kartax-next13.vercel.app", url_repo = null },
+                new PF_Source { id = 14, nombre = "Kartax v3.0 api", url_deploy = "https://kartax-api-py.vercel.app/docs", url_repo = null },
+                new PF_Source { id = 15, nombre = "Guia v1.0 app", url_deploy = "https://guias-juegos-next13-ts.vercel.app", url_repo = "https://github.com/TheNefelin/guias-juegos-next13-ts" },
+                new PF_Source { id = 16, nombre = "SQL Server", url_deploy = null, url_repo = "https://github.com/TheNefelin/SQLServer" }
             );
 
             modelBuilder.Entity<PF_Pro_Sour>().HasData(
                 new PF_Pro_Sour { id_project = 1, id_source = 1 },
                 new PF_Pro_Sour { id_project = 1, id_source = 2 },
-                new PF_Pro_Sour { id_project = 2, id_source = 3 }
+                new PF_Pro_Sour { id_project = 2, id_source = 3 },
+                new PF_Pro_Sour { id_project = 3, id_source = 4 },
+                new PF_Pro_Sour { id_project = 4, id_source = 5 },
+                new PF_Pro_Sour { id_project = 4, id_source = 6 },
+                new PF_Pro_Sour { id_project = 5, id_source = 7 },
+                new PF_Pro_Sour { id_project = 6, id_source = 8 },
+                new PF_Pro_Sour { id_project = 7, id_source = 9 },
+                new PF_Pro_Sour { id_project = 8, id_source = 10 },
+                new PF_Pro_Sour { id_project = 8, id_source = 11 },
+                new PF_Pro_Sour { id_project = 9, id_source = 12 },
+                new PF_Pro_Sour { id_project = 10, id_source = 13 },
+                new PF_Pro_Sour { id_project = 10, id_source = 14 },
+                new PF_Pro_Sour { id_project = 11, id_source = 15 },
+                new PF_Pro_Sour { id_project = 11, id_source = 16 },
+                new PF_Pro_Sour { id_project = 11, id_source = 6 }
+            );
+
+            modelBuilder.Entity<PF_Language>().HasData(
+                new PF_Language { id = 1, nombre = "C#", url_img = "pf_csharp.svg" },
+                new PF_Language { id = 2, nombre = "CSS", url_img = "pf_css.svg" },
+                new PF_Language { id = 3, nombre = "HTML", url_img = "pf_html.svg" },
+                new PF_Language { id = 4, nombre = "JavaScript", url_img = "pf_js.svg" },
+                new PF_Language { id = 5, nombre = "VisualBasic", url_img = "pf_vb.svg" },
+                new PF_Language { id = 6, nombre = "Python", url_img = "pf_py.svg" },
+                new PF_Language { id = 7, nombre = "TypeScript", url_img = "pf_ts.svg" }
+            );
+
+            modelBuilder.Entity<PF_Pro_Lang>().HasData(
+                new PF_Pro_Lang { id_project = 1, id_language = 1 },
+                new PF_Pro_Lang { id_project = 1, id_language = 2 },
+                new PF_Pro_Lang { id_project = 1, id_language = 3 },
+                new PF_Pro_Lang { id_project = 1, id_language = 4 },
+
+                new PF_Pro_Lang { id_project = 2, id_language = 2 },
+                new PF_Pro_Lang { id_project = 2, id_language = 3 },
+                new PF_Pro_Lang { id_project = 2, id_language = 4 },
+
+                new PF_Pro_Lang { id_project = 3, id_language = 2 },
+                new PF_Pro_Lang { id_project = 3, id_language = 3 },
+                new PF_Pro_Lang { id_project = 3, id_language = 4 },
+
+                new PF_Pro_Lang { id_project = 4, id_language = 1 },
+                new PF_Pro_Lang { id_project = 4, id_language = 2 },
+                new PF_Pro_Lang { id_project = 4, id_language = 3 },
+                new PF_Pro_Lang { id_project = 4, id_language = 4 },
+
+                new PF_Pro_Lang { id_project = 5, id_language = 1 },
+
+                new PF_Pro_Lang { id_project = 6, id_language = 5 },
+
+                new PF_Pro_Lang { id_project = 7, id_language = 5 },
+
+                new PF_Pro_Lang { id_project = 8, id_language = 2 },
+                new PF_Pro_Lang { id_project = 8, id_language = 3 },
+                new PF_Pro_Lang { id_project = 8, id_language = 4 },
+
+                new PF_Pro_Lang { id_project = 9, id_language = 2 },
+                new PF_Pro_Lang { id_project = 9, id_language = 3 },
+                new PF_Pro_Lang { id_project = 9, id_language = 4 },
+
+                new PF_Pro_Lang { id_project = 10, id_language = 2 },
+                new PF_Pro_Lang { id_project = 10, id_language = 3 },
+                new PF_Pro_Lang { id_project = 10, id_language = 4 },
+                new PF_Pro_Lang { id_project = 10, id_language = 6 },
+
+                new PF_Pro_Lang { id_project = 11, id_language = 1 },
+                new PF_Pro_Lang { id_project = 11, id_language = 2 },
+                new PF_Pro_Lang { id_project = 11, id_language = 3 },
+                new PF_Pro_Lang { id_project = 11, id_language = 7 }
+            );
+
+            modelBuilder.Entity<PF_Technology>().HasData(
+                new PF_Technology { id = 1, nombre = "Bootstrap", url_img = "pf_bootstrap.svg" },
+                new PF_Technology { id = 2, nombre = "DotNet", url_img = "pf_dotnet.svg" },
+                new PF_Technology { id = 3, nombre = "Git", url_img = "pf_git.svg" },
+                new PF_Technology { id = 4, nombre = "MySQL", url_img = "pf_mysql.svg" },
+                new PF_Technology { id = 5, nombre = "Node", url_img = "pf_node.png" },
+                new PF_Technology { id = 6, nombre = "React", url_img = "pf_react.svg" },
+                new PF_Technology { id = 7, nombre = "SqlServer", url_img = "pf_mssql.png" },
+                new PF_Technology { id = 8, nombre = "Unity", url_img = "pf_unity.png" },
+                new PF_Technology { id = 9, nombre = "VSCode", url_img = "pf_vscode.png" },
+                new PF_Technology { id = 10, nombre = "VSStudio", url_img = "pf_vsstudio.svg" },
+                new PF_Technology { id = 11, nombre = "NextJS", url_img = "pf_nextjs.svg" },
+                new PF_Technology { id = 12, nombre = "PostgreSQL", url_img = "pf_postgresql.png" }
+            );
+
+            modelBuilder.Entity<PF_Pro_Tech>().HasData(
+                new PF_Pro_Tech { id_project = 1, id_technology = 2 },
+                new PF_Pro_Tech { id_project = 1, id_technology = 7 },
+                new PF_Pro_Tech { id_project = 1, id_technology = 9 },
+
+                new PF_Pro_Tech { id_project = 2, id_technology = 9 },
+
+                new PF_Pro_Tech { id_project = 3, id_technology = 9 },
+
+                new PF_Pro_Tech { id_project = 4, id_technology = 2 },
+                new PF_Pro_Tech { id_project = 4, id_technology = 7 },
+                new PF_Pro_Tech { id_project = 4, id_technology = 9 },
+
+                new PF_Pro_Tech { id_project = 5, id_technology = 8 },
+                new PF_Pro_Tech { id_project = 5, id_technology = 10 },
+
+                new PF_Pro_Tech { id_project = 6, id_technology = 2 },
+
+                new PF_Pro_Tech { id_project = 7, id_technology = 2 },
+
+                new PF_Pro_Tech { id_project = 8, id_technology = 5 },
+                new PF_Pro_Tech { id_project = 8, id_technology = 12 },
+
+                new PF_Pro_Tech { id_project = 9, id_technology = 5 },
+                new PF_Pro_Tech { id_project = 9, id_technology = 6 },
+                new PF_Pro_Tech { id_project = 9, id_technology = 11 },
+
+                new PF_Pro_Tech { id_project = 10, id_technology = 11 },
+                new PF_Pro_Tech { id_project = 10, id_technology = 7 },
+                new PF_Pro_Tech { id_project = 10, id_technology = 9 },
+
+                new PF_Pro_Tech { id_project = 11, id_technology = 7 },
+                new PF_Pro_Tech { id_project = 11, id_technology = 10 },
+                new PF_Pro_Tech { id_project = 11, id_technology = 11 }
             );
 
         }

@@ -21,5 +21,7 @@ namespace db_portafolio
         [Required]
         [StringLength(255)]
         public string url_img { get; set; }
+
+        public virtual ICollection<PF_Pro_Tech> ProjectTechnology { get; set; }
     }
 }

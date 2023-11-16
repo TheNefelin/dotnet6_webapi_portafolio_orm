@@ -11,7 +11,7 @@ using db_portafolio;
 namespace db_portafolio.Migrations
 {
     [DbContext(typeof(PortafolioContext))]
-    [Migration("20231115233807_InitDB")]
+    [Migration("20231116175852_InitDB")]
     partial class InitDB
     {
         /// <inheritdoc />
@@ -23,6 +23,73 @@ namespace db_portafolio.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("db_portafolio.PF_Language", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("url_img")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("pf_pro_language", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            nombre = "C#",
+                            url_img = "pf_csharp.svg"
+                        },
+                        new
+                        {
+                            id = 2,
+                            nombre = "CSS",
+                            url_img = "pf_css.svg"
+                        },
+                        new
+                        {
+                            id = 3,
+                            nombre = "HTML",
+                            url_img = "pf_html.svg"
+                        },
+                        new
+                        {
+                            id = 4,
+                            nombre = "JavaScript",
+                            url_img = "pf_js.svg"
+                        },
+                        new
+                        {
+                            id = 5,
+                            nombre = "VisualBasic",
+                            url_img = "pf_vb.svg"
+                        },
+                        new
+                        {
+                            id = 6,
+                            nombre = "Python",
+                            url_img = "pf_py.svg"
+                        },
+                        new
+                        {
+                            id = 7,
+                            nombre = "TypeScript",
+                            url_img = "pf_ts.svg"
+                        });
+                });
 
             modelBuilder.Entity("db_portafolio.PF_Link", b =>
                 {
@@ -640,6 +707,180 @@ namespace db_portafolio.Migrations
                         });
                 });
 
+            modelBuilder.Entity("db_portafolio.PF_Pro_Lang", b =>
+                {
+                    b.Property<int>("id_project")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
+                    b.Property<int>("id_language")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("id_project", "id_language");
+
+                    b.HasIndex("id_language");
+
+                    b.ToTable("pf_pro_lang", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            id_project = 1,
+                            id_language = 1
+                        },
+                        new
+                        {
+                            id_project = 1,
+                            id_language = 2
+                        },
+                        new
+                        {
+                            id_project = 1,
+                            id_language = 3
+                        },
+                        new
+                        {
+                            id_project = 1,
+                            id_language = 4
+                        },
+                        new
+                        {
+                            id_project = 2,
+                            id_language = 2
+                        },
+                        new
+                        {
+                            id_project = 2,
+                            id_language = 3
+                        },
+                        new
+                        {
+                            id_project = 2,
+                            id_language = 4
+                        },
+                        new
+                        {
+                            id_project = 3,
+                            id_language = 2
+                        },
+                        new
+                        {
+                            id_project = 3,
+                            id_language = 3
+                        },
+                        new
+                        {
+                            id_project = 3,
+                            id_language = 4
+                        },
+                        new
+                        {
+                            id_project = 4,
+                            id_language = 1
+                        },
+                        new
+                        {
+                            id_project = 4,
+                            id_language = 2
+                        },
+                        new
+                        {
+                            id_project = 4,
+                            id_language = 3
+                        },
+                        new
+                        {
+                            id_project = 4,
+                            id_language = 4
+                        },
+                        new
+                        {
+                            id_project = 5,
+                            id_language = 1
+                        },
+                        new
+                        {
+                            id_project = 6,
+                            id_language = 5
+                        },
+                        new
+                        {
+                            id_project = 7,
+                            id_language = 5
+                        },
+                        new
+                        {
+                            id_project = 8,
+                            id_language = 2
+                        },
+                        new
+                        {
+                            id_project = 8,
+                            id_language = 3
+                        },
+                        new
+                        {
+                            id_project = 8,
+                            id_language = 4
+                        },
+                        new
+                        {
+                            id_project = 9,
+                            id_language = 2
+                        },
+                        new
+                        {
+                            id_project = 9,
+                            id_language = 3
+                        },
+                        new
+                        {
+                            id_project = 9,
+                            id_language = 4
+                        },
+                        new
+                        {
+                            id_project = 10,
+                            id_language = 2
+                        },
+                        new
+                        {
+                            id_project = 10,
+                            id_language = 3
+                        },
+                        new
+                        {
+                            id_project = 10,
+                            id_language = 4
+                        },
+                        new
+                        {
+                            id_project = 10,
+                            id_language = 6
+                        },
+                        new
+                        {
+                            id_project = 11,
+                            id_language = 1
+                        },
+                        new
+                        {
+                            id_project = 11,
+                            id_language = 2
+                        },
+                        new
+                        {
+                            id_project = 11,
+                            id_language = 3
+                        },
+                        new
+                        {
+                            id_project = 11,
+                            id_language = 7
+                        });
+                });
+
             modelBuilder.Entity("db_portafolio.PF_Pro_Sour", b =>
                 {
                     b.Property<int>("id_project")
@@ -671,6 +912,210 @@ namespace db_portafolio.Migrations
                         {
                             id_project = 2,
                             id_source = 3
+                        },
+                        new
+                        {
+                            id_project = 3,
+                            id_source = 4
+                        },
+                        new
+                        {
+                            id_project = 4,
+                            id_source = 5
+                        },
+                        new
+                        {
+                            id_project = 4,
+                            id_source = 6
+                        },
+                        new
+                        {
+                            id_project = 5,
+                            id_source = 7
+                        },
+                        new
+                        {
+                            id_project = 6,
+                            id_source = 8
+                        },
+                        new
+                        {
+                            id_project = 7,
+                            id_source = 9
+                        },
+                        new
+                        {
+                            id_project = 8,
+                            id_source = 10
+                        },
+                        new
+                        {
+                            id_project = 8,
+                            id_source = 11
+                        },
+                        new
+                        {
+                            id_project = 9,
+                            id_source = 12
+                        },
+                        new
+                        {
+                            id_project = 10,
+                            id_source = 13
+                        },
+                        new
+                        {
+                            id_project = 10,
+                            id_source = 14
+                        },
+                        new
+                        {
+                            id_project = 11,
+                            id_source = 15
+                        },
+                        new
+                        {
+                            id_project = 11,
+                            id_source = 16
+                        },
+                        new
+                        {
+                            id_project = 11,
+                            id_source = 6
+                        });
+                });
+
+            modelBuilder.Entity("db_portafolio.PF_Pro_Tech", b =>
+                {
+                    b.Property<int>("id_project")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
+                    b.Property<int>("id_technology")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("id_project", "id_technology");
+
+                    b.HasIndex("id_technology");
+
+                    b.ToTable("pf_pro_tech", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            id_project = 1,
+                            id_technology = 2
+                        },
+                        new
+                        {
+                            id_project = 1,
+                            id_technology = 7
+                        },
+                        new
+                        {
+                            id_project = 1,
+                            id_technology = 9
+                        },
+                        new
+                        {
+                            id_project = 2,
+                            id_technology = 9
+                        },
+                        new
+                        {
+                            id_project = 3,
+                            id_technology = 9
+                        },
+                        new
+                        {
+                            id_project = 4,
+                            id_technology = 2
+                        },
+                        new
+                        {
+                            id_project = 4,
+                            id_technology = 7
+                        },
+                        new
+                        {
+                            id_project = 4,
+                            id_technology = 9
+                        },
+                        new
+                        {
+                            id_project = 5,
+                            id_technology = 8
+                        },
+                        new
+                        {
+                            id_project = 5,
+                            id_technology = 10
+                        },
+                        new
+                        {
+                            id_project = 6,
+                            id_technology = 2
+                        },
+                        new
+                        {
+                            id_project = 7,
+                            id_technology = 2
+                        },
+                        new
+                        {
+                            id_project = 8,
+                            id_technology = 5
+                        },
+                        new
+                        {
+                            id_project = 8,
+                            id_technology = 12
+                        },
+                        new
+                        {
+                            id_project = 9,
+                            id_technology = 5
+                        },
+                        new
+                        {
+                            id_project = 9,
+                            id_technology = 6
+                        },
+                        new
+                        {
+                            id_project = 9,
+                            id_technology = 11
+                        },
+                        new
+                        {
+                            id_project = 10,
+                            id_technology = 11
+                        },
+                        new
+                        {
+                            id_project = 10,
+                            id_technology = 7
+                        },
+                        new
+                        {
+                            id_project = 10,
+                            id_technology = 9
+                        },
+                        new
+                        {
+                            id_project = 11,
+                            id_technology = 7
+                        },
+                        new
+                        {
+                            id_project = 11,
+                            id_technology = 10
+                        },
+                        new
+                        {
+                            id_project = 11,
+                            id_technology = 11
                         });
                 });
 
@@ -705,77 +1150,77 @@ namespace db_portafolio.Migrations
                             id = 1,
                             nombre = "Tecno Chile",
                             orden = 1,
-                            url_img = "03-tecno-chile.jpg"
+                            url_img = "pf_tecno_chile.jpg"
                         },
                         new
                         {
                             id = 2,
                             nombre = "Web Components v1.0",
                             orden = 2,
-                            url_img = "04-web-components-v1.jpg"
+                            url_img = "pf_web_components_v1.jpg"
                         },
                         new
                         {
                             id = 3,
                             nombre = "Kartax v1.0",
                             orden = 3,
-                            url_img = "01-kartax-v1.jpg"
+                            url_img = "pf_kartax_v1.jpg"
                         },
                         new
                         {
                             id = 4,
                             nombre = "Portafolio V1.0",
                             orden = 4,
-                            url_img = "02-portafolio-v1.jpg"
+                            url_img = "pf_portafolio_v1.jpg"
                         },
                         new
                         {
                             id = 5,
                             nombre = "Game El Cubo v2.0",
                             orden = 5,
-                            url_img = "05-el-cubo-v2.jpg"
+                            url_img = "pf_el_cubo_v2.jpg"
                         },
                         new
                         {
                             id = 6,
                             nombre = "Transbank POS Integration v1.0",
                             orden = 6,
-                            url_img = "06-transbank-pos.png"
+                            url_img = "pf_transbank_pos.png"
                         },
                         new
                         {
                             id = 7,
                             nombre = "Arduino DHT Temperature Monitoring by Network",
                             orden = 7,
-                            url_img = "07-DHT.png"
+                            url_img = "pf_DHT.png"
                         },
                         new
                         {
                             id = 8,
                             nombre = "Kartax v2.0",
                             orden = 8,
-                            url_img = "08-kartax-v2.png"
+                            url_img = "pf_kartax_v2.png"
                         },
                         new
                         {
                             id = 9,
                             nombre = "Portafolio v2.0",
                             orden = 9,
-                            url_img = "09-portafolio-v2.png"
+                            url_img = "pf_portafolio_v2.png"
                         },
                         new
                         {
                             id = 10,
                             nombre = "Kartax v3.0 (Developing...)",
                             orden = 10,
-                            url_img = "10-kartax-v3.png"
+                            url_img = "pf_kartax_v3.png"
                         },
                         new
                         {
                             id = 11,
                             nombre = "Guides for games",
                             orden = 11,
-                            url_img = "11-guides-for-games.png"
+                            url_img = "pf_guides_for_games.png"
                         });
                 });
 
@@ -802,7 +1247,7 @@ namespace db_portafolio.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("pf_source", (string)null);
+                    b.ToTable("pf_pro_source", (string)null);
 
                     b.HasData(
                         new
@@ -890,20 +1335,123 @@ namespace db_portafolio.Migrations
                         {
                             id = 13,
                             nombre = "Kartax v3.0 app",
-                            url_deploy = "https://kartax-next13.vercel.app/"
+                            url_deploy = "https://kartax-next13.vercel.app"
                         },
                         new
                         {
                             id = 14,
+                            nombre = "Kartax v3.0 api",
+                            url_deploy = "https://kartax-api-py.vercel.app/docs"
+                        },
+                        new
+                        {
+                            id = 15,
                             nombre = "Guia v1.0 app",
                             url_deploy = "https://guias-juegos-next13-ts.vercel.app",
                             url_repo = "https://github.com/TheNefelin/guias-juegos-next13-ts"
                         },
                         new
                         {
-                            id = 15,
+                            id = 16,
                             nombre = "SQL Server",
                             url_repo = "https://github.com/TheNefelin/SQLServer"
+                        });
+                });
+
+            modelBuilder.Entity("db_portafolio.PF_Technology", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("url_img")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("pf_pro_technology", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            nombre = "Bootstrap",
+                            url_img = "pf_bootstrap.svg"
+                        },
+                        new
+                        {
+                            id = 2,
+                            nombre = "DotNet",
+                            url_img = "pf_dotnet.svg"
+                        },
+                        new
+                        {
+                            id = 3,
+                            nombre = "Git",
+                            url_img = "pf_git.svg"
+                        },
+                        new
+                        {
+                            id = 4,
+                            nombre = "MySQL",
+                            url_img = "pf_mysql.svg"
+                        },
+                        new
+                        {
+                            id = 5,
+                            nombre = "Node",
+                            url_img = "pf_node.png"
+                        },
+                        new
+                        {
+                            id = 6,
+                            nombre = "React",
+                            url_img = "pf_react.svg"
+                        },
+                        new
+                        {
+                            id = 7,
+                            nombre = "SqlServer",
+                            url_img = "pf_mssql.png"
+                        },
+                        new
+                        {
+                            id = 8,
+                            nombre = "Unity",
+                            url_img = "pf_unity.png"
+                        },
+                        new
+                        {
+                            id = 9,
+                            nombre = "VSCode",
+                            url_img = "pf_vscode.png"
+                        },
+                        new
+                        {
+                            id = 10,
+                            nombre = "VSStudio",
+                            url_img = "pf_vsstudio.svg"
+                        },
+                        new
+                        {
+                            id = 11,
+                            nombre = "NextJS",
+                            url_img = "pf_nextjs.svg"
+                        },
+                        new
+                        {
+                            id = 12,
+                            nombre = "PostgreSQL",
+                            url_img = "pf_postgresql.png"
                         });
                 });
 
@@ -979,6 +1527,25 @@ namespace db_portafolio.Migrations
                     b.Navigation("LinkGrp");
                 });
 
+            modelBuilder.Entity("db_portafolio.PF_Pro_Lang", b =>
+                {
+                    b.HasOne("db_portafolio.PF_Language", "Language")
+                        .WithMany("ProjectLanguage")
+                        .HasForeignKey("id_language")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("db_portafolio.PF_Project", "Project")
+                        .WithMany("ProjectLanguage")
+                        .HasForeignKey("id_project")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("db_portafolio.PF_Pro_Sour", b =>
                 {
                     b.HasOne("db_portafolio.PF_Project", "Project")
@@ -998,6 +1565,30 @@ namespace db_portafolio.Migrations
                     b.Navigation("Source");
                 });
 
+            modelBuilder.Entity("db_portafolio.PF_Pro_Tech", b =>
+                {
+                    b.HasOne("db_portafolio.PF_Project", "Project")
+                        .WithMany("ProjectTechnology")
+                        .HasForeignKey("id_project")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("db_portafolio.PF_Technology", "Technology")
+                        .WithMany("ProjectTechnology")
+                        .HasForeignKey("id_technology")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+
+                    b.Navigation("Technology");
+                });
+
+            modelBuilder.Entity("db_portafolio.PF_Language", b =>
+                {
+                    b.Navigation("ProjectLanguage");
+                });
+
             modelBuilder.Entity("db_portafolio.PF_Link_Grp", b =>
                 {
                     b.Navigation("Links");
@@ -1005,12 +1596,21 @@ namespace db_portafolio.Migrations
 
             modelBuilder.Entity("db_portafolio.PF_Project", b =>
                 {
+                    b.Navigation("ProjectLanguage");
+
                     b.Navigation("ProjectSources");
+
+                    b.Navigation("ProjectTechnology");
                 });
 
             modelBuilder.Entity("db_portafolio.PF_Source", b =>
                 {
                     b.Navigation("ProjectSources");
+                });
+
+            modelBuilder.Entity("db_portafolio.PF_Technology", b =>
+                {
+                    b.Navigation("ProjectTechnology");
                 });
 #pragma warning restore 612, 618
         }

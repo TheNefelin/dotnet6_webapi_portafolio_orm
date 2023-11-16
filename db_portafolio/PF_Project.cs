@@ -26,5 +26,7 @@ namespace db_portafolio
         public int orden { get; set; }
 
         public virtual ICollection<PF_Pro_Sour> ProjectSources { get; set; }
+        public virtual ICollection<PF_Pro_Lang> ProjectLanguage { get; set; }
+        public virtual ICollection<PF_Pro_Tech> ProjectTechnology { get; set; }
     }
 }
