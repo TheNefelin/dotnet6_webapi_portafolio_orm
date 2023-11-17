@@ -217,18 +217,18 @@ namespace db_portafolio
             order = 0;
 
             modelBuilder.Entity<PF_Project>().HasData(
-                new PF_Project { id = 1, nombre = "Tecno Chile", url_img = "pf_tecno_chile.jpg", orden = ++order },
-                new PF_Project { id = 2, nombre = "Web Components v1.0", url_img = "pf_web_components_v1.jpg", orden = ++order },
-                new PF_Project { id = 3, nombre = "Kartax v1.0", url_img = "pf_kartax_v1.jpg", orden = ++order },
-                new PF_Project { id = 4, nombre = "Portafolio V1.0", url_img = "pf_portafolio_v1.jpg", orden = ++order },
-                new PF_Project { id = 5, nombre = "Game El Cubo v2.0", url_img = "pf_el_cubo_v2.jpg", orden = ++order },
-                new PF_Project { id = 6, nombre = "Transbank POS Integration v1.0", url_img = "pf_transbank_pos.png", orden = ++order },
-                new PF_Project { id = 7, nombre = "Arduino DHT Temperature Monitoring by Network", url_img = "pf_DHT.png", orden = ++order },
-                new PF_Project { id = 8, nombre = "Kartax v2.0", url_img = "pf_kartax_v2.png", orden = ++order },
-                new PF_Project { id = 9, nombre = "Portafolio v2.0", url_img = "pf_portafolio_v2.png", orden = ++order },
+                new PF_Project { id = 1, nombre = "Tecno Chile", url_img = "pf_proj_tecnochile.jpg", orden = ++order },
+                new PF_Project { id = 2, nombre = "Web Components v1.0", url_img = "pf_proj_components_v1.jpg", orden = ++order },
+                new PF_Project { id = 3, nombre = "Kartax v1.0", url_img = "pf_proj_kartax_v1.jpg", orden = ++order },
+                new PF_Project { id = 4, nombre = "Portafolio V1.0", url_img = "pf_proj_portafolio_v1.jpg", orden = ++order },
+                new PF_Project { id = 5, nombre = "Game El Cubo v2.0", url_img = "pf_proj_cubo_v2.jpg", orden = ++order },
+                new PF_Project { id = 6, nombre = "Transbank POS Integration v1.0", url_img = "pf_proj_transbank_pos.png", orden = ++order },
+                new PF_Project { id = 7, nombre = "Arduino DHT Temperature Monitoring by Network", url_img = "pf_proj_dht.png", orden = ++order },
+                new PF_Project { id = 8, nombre = "Kartax v2.0", url_img = "pf_proj_kartax_v2.png", orden = ++order },
+                new PF_Project { id = 9, nombre = "Portafolio v2.0", url_img = "pf_proj_portafolio_v2.png", orden = ++order },
                 new PF_Project { id = 10, nombre = "Kartax v3.0 (Developing...)", url_img = "pf_kartax_v3.png", orden = ++order },
-                new PF_Project { id = 11, nombre = "Guides for games", url_img = "pf_guides_for_games.png", orden = ++order },
-                new PF_Project { id = 12, nombre = "Aguiliza", url_img = "pf_guides_for_games.png", orden = ++order }
+                new PF_Project { id = 11, nombre = "Guides for games", url_img = "pf_proj_guides.png", orden = ++order },
+                new PF_Project { id = 12, nombre = "Agiliza", url_img = "pf_proj_agiliza.png", orden = ++order }
             );
 
             modelBuilder.Entity<PF_Source>().HasData(
@@ -273,13 +273,13 @@ namespace db_portafolio
             );
 
             modelBuilder.Entity<PF_Language>().HasData(
-                new PF_Language { id = 1, nombre = "C#", url_img = "pf_csharp.svg" },
-                new PF_Language { id = 2, nombre = "CSS", url_img = "pf_css.svg" },
-                new PF_Language { id = 3, nombre = "HTML", url_img = "pf_html.svg" },
-                new PF_Language { id = 4, nombre = "JavaScript", url_img = "pf_js.svg" },
-                new PF_Language { id = 5, nombre = "VisualBasic", url_img = "pf_vb.svg" },
-                new PF_Language { id = 6, nombre = "Python", url_img = "pf_py.svg" },
-                new PF_Language { id = 7, nombre = "TypeScript", url_img = "pf_ts.svg" }
+                new PF_Language { id = 1, nombre = "C#", url_img = "pf_lang_csharp.svg" },
+                new PF_Language { id = 2, nombre = "CSS", url_img = "pf_lang_css.svg" },
+                new PF_Language { id = 3, nombre = "HTML", url_img = "pf_lang_html.svg" },
+                new PF_Language { id = 4, nombre = "JavaScript", url_img = "pf_lang_js.svg" },
+                new PF_Language { id = 5, nombre = "VisualBasic", url_img = "pf_lang_vb.svg" },
+                new PF_Language { id = 6, nombre = "Python", url_img = "pf_lang_py.svg" },
+                new PF_Language { id = 7, nombre = "TypeScript", url_img = "pf_lang_ts.svg" }
             );
 
             modelBuilder.Entity<PF_Pro_Lang>().HasData(
@@ -327,18 +327,18 @@ namespace db_portafolio
             );
 
             modelBuilder.Entity<PF_Technology>().HasData(
-                new PF_Technology { id = 1, nombre = "Bootstrap", url_img = "pf_bootstrap.svg" },
-                new PF_Technology { id = 2, nombre = "DotNet", url_img = "pf_dotnet.svg" },
-                new PF_Technology { id = 3, nombre = "Git", url_img = "pf_git.svg" },
-                new PF_Technology { id = 4, nombre = "MySQL", url_img = "pf_mysql.svg" },
-                new PF_Technology { id = 5, nombre = "Node", url_img = "pf_node.png" },
-                new PF_Technology { id = 6, nombre = "React", url_img = "pf_react.svg" },
-                new PF_Technology { id = 7, nombre = "SqlServer", url_img = "pf_mssql.png" },
-                new PF_Technology { id = 8, nombre = "Unity", url_img = "pf_unity.png" },
-                new PF_Technology { id = 9, nombre = "VSCode", url_img = "pf_vscode.png" },
-                new PF_Technology { id = 10, nombre = "VSStudio", url_img = "pf_vsstudio.svg" },
-                new PF_Technology { id = 11, nombre = "NextJS", url_img = "pf_nextjs.svg" },
-                new PF_Technology { id = 12, nombre = "PostgreSQL", url_img = "pf_postgresql.png" }
+                new PF_Technology { id = 1, nombre = "Bootstrap", url_img = "pf_tech_bootstrap.svg" },
+                new PF_Technology { id = 2, nombre = "DotNet", url_img = "pf_tech_dotnet.svg" },
+                new PF_Technology { id = 3, nombre = "Git", url_img = "pf_tech_git.svg" },
+                new PF_Technology { id = 4, nombre = "MySQL", url_img = "pf_tech_mysql.svg" },
+                new PF_Technology { id = 5, nombre = "Node", url_img = "pf_tech_node.png" },
+                new PF_Technology { id = 6, nombre = "React", url_img = "pf_tech_react.svg" },
+                new PF_Technology { id = 7, nombre = "SqlServer", url_img = "pf_tech_mssql.png" },
+                new PF_Technology { id = 8, nombre = "Unity", url_img = "pf_tech_unity.png" },
+                new PF_Technology { id = 9, nombre = "VSCode", url_img = "pf_tech_vscode.png" },
+                new PF_Technology { id = 10, nombre = "VSStudio", url_img = "pf_tech_vsstudio.svg" },
+                new PF_Technology { id = 11, nombre = "NextJS", url_img = "pf_tech_nextjs.svg" },
+                new PF_Technology { id = 12, nombre = "PostgreSQL", url_img = "pf_tech_postgresql.png" }
             );
 
             modelBuilder.Entity<PF_Pro_Tech>().HasData(
