@@ -244,8 +244,8 @@ namespace db_portafolio
                 new PF_Source { id = 10, nombre = "Kartax v2.0 app", url_deploy = "https://kartax-express-production.up.railway.app/", url_repo = "https://github.com/TheNefelin/kartax-express" },
                 new PF_Source { id = 11, nombre = "Kartax v2.0 api", url_deploy = "https://kartax-api-production.up.railway.app", url_repo = "https://github.com/TheNefelin/kartax-api" },
                 new PF_Source { id = 12, nombre = "Portafolio v2.0 app", url_deploy = "http://www.francisco-dev.cl", url_repo = "https://github.com/TheNefelin/portafolio-next13" },
-                new PF_Source { id = 13, nombre = "Kartax v3.0 app", url_deploy = "https://kartax-next13.vercel.app", url_repo = null },
-                new PF_Source { id = 14, nombre = "Kartax v3.0 api", url_deploy = "https://kartax-api-py.vercel.app/docs", url_repo = null },
+                new PF_Source { id = 13, nombre = "Kartax v3.0 app", url_deploy = "https://kartax-next13.vercel.app", url_repo = "https://github.com/TheNefelin/kartax-next13" },
+                new PF_Source { id = 14, nombre = "Kartax v3.0 api", url_deploy = "https://kartax-api-py.vercel.app/docs", url_repo = "https://github.com/TheNefelin/kartax-api-py" },
                 new PF_Source { id = 15, nombre = "Guia v1.0 app", url_deploy = "https://guias-juegos-next13-ts.vercel.app", url_repo = "https://github.com/TheNefelin/guias-juegos-next13-ts" },
                 new PF_Source { id = 16, nombre = "SQL Server", url_deploy = null, url_repo = "https://github.com/TheNefelin/SQLServer" },
                 new PF_Source { id = 17, nombre = "Agiliza app", url_deploy = "https://agiliza-next14-ts.vercel.app", url_repo = "https://github.com/TheNefelin/agiliza-next14-ts" }
